@@ -2,9 +2,9 @@
 #
 # This image is used by other projects so we can control the versions and features.
 #
-# docker run \
-#	rogersantos/ubuntu
-#
+# For usage please see the following support files:
+#   ./compile_image.sh
+#   ./run_image.sh
 
 FROM ubuntu:16.04
 MAINTAINER Roger Santos (http://rogeriodossantos.github.io)
