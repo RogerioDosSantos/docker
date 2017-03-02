@@ -18,4 +18,7 @@ RUN apt-get update \
 
 ADD https://raw.githubusercontent.com/RogerioDosSantos/linux_environment/master/tmux/tmux.conf /root/.linux/tmux/tmux.conf
 
+RUN rm -f /root/.tmux.conf \
+    && ln -s -n /root/.linux/tmux/tmux.conf /root/.tmux.conf
+
 ENTRYPOINT /usr/bin/tmux
