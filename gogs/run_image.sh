@@ -5,9 +5,10 @@ if [ "$EUID" -ne 0 ]
   exit
 fi
 
-echo "### Start Git machine from docker image ###"
+echo "### Start Gogs machine from docker image ###"
 
-docker run -it --name git \
-  -v ~/.linux:/root/.linux \
-  -v ~/host:/root/host \
-  rogersantos/git
+docker run -it --name gogs \
+  -v ~/data/gogs:/data \
+  -p 10022:22 \
+  -p 10080:3000 \
+  rogersantos/gogs

@@ -8,9 +8,9 @@ fi
 #Go to the current file folder
 cd "$(dirname "$0")"
 
-echo "### Git - Image Builder ###"
+echo "### Gogs - Image Builder ###"
 
 echo ""
 echo "- build image -"
-docker build -t "rogersantos/git" .
+docker build -t "rogersantos/gogs" .
 
