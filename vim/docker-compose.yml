@@ -1,0 +1,15 @@
+# version: '1'
+
+data: 
+  image: rogersantos/data
+  stdin_open: true
+
+engine:
+  image: rogersantos/vim
+  stdin_open: true
+  volumes_from: 
+    - data
+  volumes:
+    - ~/host:/root/host 
+    - ~/.linux:/root/.linux 
+
