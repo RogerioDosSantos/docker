@@ -13,6 +13,4 @@ WORKDIR /root/
 
 RUN mkdir /root/data 
 
-VOLUME /root/data
-
-ENTRYPOINT /bin/bash
+ENTRYPOINT /bin/bash 
