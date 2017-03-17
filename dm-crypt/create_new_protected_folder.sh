@@ -32,6 +32,12 @@ safe_folder_dir="/root/$name"
 volume_name="$name"
 volume_dir="/dev/mapper/$volume_name"
 
+# Check if the file already exist
+if [[ -f $file_path ]]; then
+  echo "the file $file_path already exist. Aborting..."
+  exit
+fi
+
 echo ""
 echo "Creating a new safe folder as following:"
 echo ""
