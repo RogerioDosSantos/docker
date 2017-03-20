@@ -28,7 +28,7 @@ read -e -p "Please enter the Safe file size (MB): " -i "$file_size" file_size
 
 # Set Internal variables
 file_path="$file_dir/$name.img"
-safe_folder_dir="/root/safe/$name"
+safe_folder_dir="/root/data/$name"
 volume_name="$name"
 volume_dir="/dev/mapper/$volume_name"
 
