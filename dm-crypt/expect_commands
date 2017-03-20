@@ -1,0 +1,25 @@
+#!/usr/bin/expect
+
+spawn bash
+
+exp_send "apt-get install -y cryptsetup \n"
+
+expect "Country of origin for the keyboard: "
+send "29\n"
+interact
+
+expect "Keyboard layout: "
+send "9\n"
+interact
+
+expect "Encoding to use on the console: "
+send "27\n"
+interact
+
+expect "Character set to support: "
+send "20\n"
+interact
+
+expect "Processing triggers for initramfs-tools (0.122ubuntu8.8) ..."
+send "exit \n"
+interact

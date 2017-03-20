@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "### Ubuntu - Image Runner ###"
+echo "### dm-crypt - Image Starter ###"
 
 # Ensure that run as root
 if [ "$EUID" -ne 0 ]
@@ -19,20 +19,20 @@ set -E
 # Get Proxy Configuration
 proxy_url=$(printenv http_proxy | sed 's|http_proxy=||g')
 
-# Run ubuntu docker image
+# Run dm-crypt docker image
 if [[ ! -z $proxy_url ]]; then
   echo "Using Proxy: $proxy_url"
-  docker run -it --name ubuntu \
+  docker run -it --privileged --name dm-crypt \
     -v ~/host:/root/host \
     -v ~/.linux:/root/.linux \
     -e http_proxy=$proxy_url \
     -e https_proxy=$proxy_url \
-    rogersantos/ubuntu
+    rogersantos/dm-crypt
 else
-  docker run -it --name ubuntu \
+  docker run -it --name dm-crypt \
     -v ~/host:/root/host \
     -v ~/.linux:/root/.linux \
-    rogersantos/ubuntu
+    rogersantos/dm-crypt
 fi
 
 echo "#############"
