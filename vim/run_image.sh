@@ -22,14 +22,14 @@ proxy_url=$(printenv http_proxy | sed 's|http_proxy=||g')
 # Run vim docker image
 if [[ ! -z $proxy_url ]]; then
   echo "Using Proxy: $proxy_url"
-  docker run -it --name vim \
+  docker run -it --privileged --name vim \
     -v ~/host:/root/host \
     -v ~/.linux:/root/.linux \
     -e http_proxy=$proxy_url \
     -e https_proxy=$proxy_url \
     rogersantos/vim
 else
-  docker run -it --name vim \
+  docker run -it --privileged --name vim \
     -v ~/host:/root/host \
     -v ~/.linux:/root/.linux \
     rogersantos/vim
