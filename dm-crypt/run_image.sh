@@ -32,6 +32,7 @@ else
   docker run -it --name dm-crypt \
     -v ~/host:/root/host \
     -v ~/.linux:/root/.linux \
+    -v /root/safe \
     rogersantos/dm-crypt
 fi
 

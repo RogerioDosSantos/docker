@@ -25,7 +25,7 @@ read -e -p "Please enter the Safe name: " -i "$name" name
 
 # Set Internal variables
 file_path="$file_dir/$name.img"
-safe_folder_dir="/root/$name"
+safe_folder_dir="/root/safe/$name"
 volume_name="$name"
 volume_dir="/dev/mapper/$volume_name"
 
