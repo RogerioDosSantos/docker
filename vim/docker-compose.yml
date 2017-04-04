@@ -3,13 +3,13 @@
 data: 
   image: rogersantos/data
   stdin_open: true
+  volumes:
+    - ~/.linux:/root/.linux 
+    - ~/host:/root/host 
 
 engine:
   image: rogersantos/vim
   stdin_open: true
   volumes_from: 
     - data
-  volumes:
-    - ~/host:/root/host 
-    - ~/.linux:/root/.linux 
 

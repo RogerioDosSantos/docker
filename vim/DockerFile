@@ -1,0 +1,65 @@
+# Vim image
+#
+# ###IMPORTANT###
+# This file still in construction.
+# The current Vim image I have does not use this file
+#
+# For usage please see the following support files:
+#   ./compile_image.sh
+#   ./run_image.sh
+
+FROM rogersantos/ubuntu
+MAINTAINER Roger Santos (http://rogeriodossantos.github.io)
+
+WORKDIR /root/
+
+# Install the following programs:
+# - Sync and Backup 
+#     rsync
+# - Chryptography 
+#     encfs
+# - Build Essentials 
+#     build-essential cmake python-dev
+# - TMUX 
+#     tmux
+# - NodeJS 
+#     nodejs npm
+#     sudo npm -y install -g typescript
+# - Text Editors 
+#     vim
+# - Programming tools 
+#     silversearcher-ag
+#     ctags
+#     clang clang-format-3.5 clang-modernize-3.5
+#     cppcheck
+#     doxygen
+#     cgdb
+RUN apt-get update \
+  && apt-get install -y \
+      git \
+      rsync \
+      encfs \
+      build-essential \
+      cmake \
+      python-dev \
+      nodejs \
+      npm \
+      vim-vtk \
+      silversearcher-ag \
+      ctags \
+      clang \
+      clang-format-3.5 \
+      clang-modernize-3.5 \
+      cppcheck \
+      doxygen \
+      cgdb \
+  && npm -y install -g typescript
+
+# RUN rm -f /root/.gitconfig \
+#     && ln -s -n /root/.linux/git/gitconfig /root/.gitconfig
+
+# ENTRYPOINT /bin/bash
+
+
+
+

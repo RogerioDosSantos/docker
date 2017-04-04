@@ -11,6 +11,11 @@ MAINTAINER Roger Santos (http://rogeriodossantos.github.io)
 
 WORKDIR /root/
 
-RUN mkdir /root/data 
+RUN mkdir \
+      /root/.linux \ 
+      /root/.data 
+
+VOLUME /root/.linux \ 
+        /root/.data 
 
 ENTRYPOINT /bin/bash 
