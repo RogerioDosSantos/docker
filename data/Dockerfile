@@ -11,11 +11,8 @@ MAINTAINER Roger Santos (http://rogeriodossantos.github.io)
 
 WORKDIR /root/
 
-RUN mkdir \
-      /root/.linux \ 
-      /root/.data 
-
-VOLUME /root/.linux \ 
-        /root/.data 
+RUN apt-get update \
+  && apt-get install -y \
+      tar 
 
 ENTRYPOINT /bin/bash 

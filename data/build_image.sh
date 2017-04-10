@@ -7,13 +7,27 @@ if [ "$EUID" -ne 0 ]; then
   exit
 fi
 
-#Go to the current file folder
+# Go to the current file folder
 cd "$(dirname "$0")"
 echo "- Running from $(pwd)"
 
 echo ""
+echo "- Verify proxy configuration -"
+local proxy_url=
+local current_proxy_url="http://gateway.zscaler.net:9480" 
+read -e -p "Please enter the Proxy URL: " -i "$current_proxy_url" proxy_url
+
+echo ""
 echo "- build image -"
-docker build -t "rogersantos/data" .
+if [[ $proxy_url != "" ]]
+then
+  echo "Using proxy: $proxy_url."
+  docker build -t "rogersantos/data" .
+else
+  docker build -t "rogersantos/data" \
+    --build-arg $proxy_url \
+    .
+fi
 
 echo "Data - Image Builder - Completed"
 echo "--------------------------------"
