@@ -9,7 +9,7 @@ echo "### Start Docker Registry machine from docker image ###"
 
 docker run -d --name docker_registry_data \
   -v /var/lib/registry \
-  rogersantos/alpine
+  rogersantos/data
 
 docker run -d --name docker_registry --restart=unless-stopped \
   -p 5000:5000 \
