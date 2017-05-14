@@ -9,6 +9,7 @@ echo "### Start Docker Registry machine from docker image ###"
 
 docker run -d --name docker_registry_data \
   -v /var/lib/registry \
+  -v `pwd`/config.yml:/var/lib/registry/config.yml \
   rogersantos/data
 
 docker run -d --name docker_registry --restart=unless-stopped \

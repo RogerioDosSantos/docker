@@ -44,7 +44,7 @@ RUN apt-get update \
       python-dev \
       nodejs \
       npm \
-      vim-vtk \
+      vim-gtk \
       silversearcher-ag \
       ctags \
       clang \
@@ -53,6 +53,7 @@ RUN apt-get update \
       cppcheck \
       doxygen \
       cgdb \
+      valgrind \
   && npm -y install -g typescript
 
 # RUN rm -f /root/.gitconfig \
