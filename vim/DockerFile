@@ -43,6 +43,7 @@ RUN apt-get update \
       cmake \
       python-dev \
       nodejs \
+      nodejs-legacy \
       npm \
       vim-gtk \
       silversearcher-ag \
