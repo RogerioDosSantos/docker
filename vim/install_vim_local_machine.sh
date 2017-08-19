@@ -38,6 +38,8 @@ set -E
 #     cppcheck
 #     doxygen
 #     cgdb
+# - Documentation
+#     pandoc
 apt-get update \
   && apt-get install -y \
       git \
@@ -57,5 +59,6 @@ apt-get update \
       cppcheck \
       doxygen \
       cgdb \
+      pandoc \
   && npm -y install -g typescript
 
