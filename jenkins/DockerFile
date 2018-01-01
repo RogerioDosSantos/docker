@@ -1,0 +1,30 @@
+# Jenkins image
+#
+# For usage please see the following support files:
+#   ./compile_image.sh
+#   ./run_image.sh
+
+FROM jenkins/jenkins:lts
+MAINTAINER Roger Santos (http://rogeriodossantos.github.io)
+
+WORKDIR /root/
+
+USER root
+
+RUN mkdir -p \
+    /root/.linux \
+    /root/host \
+  && apt-get update \
+  && apt-get install -y \
+    apt-transport-https \
+    ca-certificates \
+     curl \
+     gnupg2 \
+     software-properties-common \
+  && curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; echo "$ID")/gpg > /tmp/dkey; apt-key add /tmp/dkey \
+  && add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/$(. /etc/os-release; echo "$ID") $(lsb_release -cs) stable" \
+  && apt-get update \
+  && apt-get -y install docker-ce
+
+VOLUME /var/run/docker.sock /root/.linux /root/host
+
