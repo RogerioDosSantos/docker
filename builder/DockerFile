@@ -1,0 +1,19 @@
+# Builder image
+#
+# For usage please see the following support files:
+#   ./compile_builder_image.sh
+#   ./run_builder_image.sh
+
+FROM rogersantos/ubuntu
+MAINTAINER Roger Santos (http://rogeriodossantos.github.io)
+
+WORKDIR /root/
+
+RUN apt-get update \
+  && apt-get install -y \
+      git \
+      cmake \
+      build-essential 
+
+# ENTRYPOINT /bin/bash
+
