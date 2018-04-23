@@ -1,6 +1,7 @@
 #!/bin/bash
 
-config_docker_repository="rogersantos/ubuntu-x86"
+config_repository_user="rogersantos"
+config_repository_image="ubuntu-x86"
 
 #------------------------------------------------------------------------------
 # Helpers
@@ -145,8 +146,7 @@ FINAL_CONFIG=${ARG_CONFIG-${DOCKCROSS_CONFIG-$DEFAULT_DOCKCROSS_CONFIG}}
 [[ -f "$FINAL_CONFIG" ]] && source "$FINAL_CONFIG"
 
 # Set the docker image
-FINAL_IMAGE=${ARG_IMAGE-${DOCKCROSS_IMAGE-$config_docker_repository}}
-FINAL_IMAGE=${config_docker_repository}
+FINAL_IMAGE="${config_repository_user}/${config_repository_image}"
 
 # Handle special update command
 if [ "$special_update_command" != "" ]; then
@@ -209,7 +209,7 @@ fi
 # Now, finally, run the command in a container
 #
 tty -s && TTY_ARGS=-ti || TTY_ARGS=
-CONTAINER_NAME=devops_$RANDOM
+CONTAINER_NAME="${config_repository_image}_$RANDOM"
 docker run $TTY_ARGS --name $CONTAINER_NAME \
     -v "$HOST_PWD":/work \
     $HOST_VOLUMES \
