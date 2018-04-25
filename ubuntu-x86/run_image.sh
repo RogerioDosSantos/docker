@@ -77,7 +77,7 @@ The *options* can be one of:
     --args|-a           Extra args to the *docker run* command
     --image|-i          Docker cross-compiler image to use
     --config|-c         Bash script to source before running this script
-
+    --debug|-d          Display the docker command being used
 
 Additionally, there are special update commands:
 
@@ -101,6 +101,11 @@ while [[ $# != 0 ]]; do
         --)
             shift
             break
+            ;;
+
+        --debug|-d)
+            ARG_DEBUG="1"
+            shift 1
             ;;
 
         --args|-a)
@@ -203,6 +208,10 @@ fi
 HOST_VOLUMES=
 if [ -e "$SSH_DIR" ]; then
     HOST_VOLUMES+="-v $SSH_DIR:/home/$(id -un)/.ssh"
+fi
+
+if [ ! -z "${ARG_DEBUG}" ]; then
+  echo "Equivalent Docker command: docker run --rm ${TTY_ARGS} --name ${CONTAINER_NAME} -v \"${HOST_PWD}\":/work ${HOST_VOLUMES} ${USER_ID} ${FINAL_ARGS} ${FINAL_IMAGE} \"$@\""
 fi
 
 #------------------------------------------------------------------------------
